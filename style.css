@@ -1,0 +1,454 @@
+/* ==========================================================================
+   CatChat -- style.css
+   تم: "گربه در غروب" -- رنگ‌های گرم و تیره، لهجه‌ی کهربایی، سایه‌روشن آرام.
+   ========================================================================== */
+
+:root {
+  --bg:            #241f1b;
+  --surface:       #322a24;
+  --surface-alt:   #3d332b;
+  --border:        #4a3e34;
+
+  --accent:        #e7a33e;   /* کهربایی -- رنگ اصلی دکمه‌ها و لهجه */
+  --accent-ink:    #241f1b;   /* رنگ متن روی پس‌زمینه‌ی کهربایی */
+  --accent-soft:   rgba(231, 163, 62, 0.16);
+
+  --secondary:     #8ca37e;   /* سبز خاکستری کمرنگ -- نشانه‌ی ادمین/موفقیت */
+  --danger:        #c4694f;
+
+  --text-primary:  #f3eae0;
+  --text-muted:    #b7a897;
+  --text-faint:    #83766a;
+
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+
+  --font: 'Vazirmatn', 'Tahoma', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: radial-gradient(ellipse at top, #2c2620 0%, var(--bg) 55%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+button, input, textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* ساختار کلی صفحه                                                        */
+/* ---------------------------------------------------------------------- */
+
+.app-shell {
+  width: 100%;
+  max-width: 640px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 4px 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.paw-icon {
+  width: 30px;
+  height: 30px;
+  fill: var(--accent);
+  flex-shrink: 0;
+}
+
+.brand h1 {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+.user-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.username-pill {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden { display: none !important; }
+
+/* ---------------------------------------------------------------------- */
+/* کارت‌های عمومی (فرم ورود و بخش چت)                                     */
+/* ---------------------------------------------------------------------- */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.6);
+}
+
+/* ---------------------------------------------------------------------- */
+/* بخش ورود / ثبت‌نام                                                     */
+/* ---------------------------------------------------------------------- */
+
+.auth-card {
+  margin: auto 0;
+  padding: 28px 24px;
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  background: var(--surface-alt);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  margin-bottom: 22px;
+}
+
+.tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 0;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.tab.active {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.auth-form input {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 15px;
+  color: var(--text-primary);
+}
+
+.auth-form input:focus-visible {
+  border-color: var(--accent);
+}
+
+.field-hint {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin: -6px 0 0;
+}
+
+.field-error {
+  font-size: 13px;
+  color: var(--danger);
+  margin: -6px 0 0;
+  min-height: 16px;
+}
+.field-error:empty { display: none; }
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 13px 0;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter 0.15s ease, transform 0.1s ease;
+}
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-primary:active { transform: scale(0.98); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--text-primary); }
+
+/* ---------------------------------------------------------------------- */
+/* بخش چت                                                                 */
+/* ---------------------------------------------------------------------- */
+
+.chat-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+  max-height: 82vh;
+  overflow: hidden;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  scroll-behavior: smooth;
+}
+
+.empty-state {
+  margin: auto;
+  text-align: center;
+  color: var(--text-faint);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+/* هر پیام یک ردیف کامل‌عرض هست تا بتونیم با مارجین فیزیکی، حباب رو به
+   راست (پیام خودم) یا چپ (پیام بقیه) بچسبونیم -- این رفتار عمداً مستقل
+   از جهت RTL صفحه است، دقیقا مثل تلگرام و واتس‌اپ فارسی. */
+.message-row {
+  display: flex;
+  width: 100%;
+}
+
+.message {
+  max-width: 78%;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  animation: message-in 0.18s ease-out;
+}
+
+@keyframes message-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.message-row.own {
+  justify-content: flex-start; /* در کنار مارجین فیزیکی زیر، اثری نداره ولی برای اطمینان */
+}
+.message-row.own .message {
+  margin-left: 0;
+  margin-right: auto;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-bottom-left-radius: 4px;
+}
+.message-row.other .message {
+  margin-right: 0;
+  margin-left: auto;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-bottom-right-radius: 4px;
+}
+
+.message-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+
+.message-author {
+  font-size: 12.5px;
+  font-weight: 700;
+}
+.message-row.own .message-author { color: var(--accent-ink); opacity: 0.75; }
+.message-row.other .message-author { color: var(--accent); }
+
+.message-time {
+  font-size: 11px;
+  opacity: 0.65;
+}
+
+.message-content {
+  font-size: 14.5px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.message-quote {
+  display: block;
+  font-size: 12px;
+  padding: 6px 10px;
+  margin-bottom: 6px;
+  border-right: 3px solid var(--accent);
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  opacity: 0.85;
+}
+.message-row.own .message-quote {
+  border-right-color: var(--accent-ink);
+  background: rgba(0, 0, 0, 0.12);
+}
+.message-quote strong { font-weight: 700; }
+
+.message-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 5px;
+}
+
+.message-actions button {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.message-actions button:hover { opacity: 1; }
+
+/* ---------------------------------------------------------------------- */
+/* پیش‌نمایش ریپلای بالای فرم ارسال پیام                                  */
+/* ---------------------------------------------------------------------- */
+
+.reply-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--surface-alt);
+  border-top: 1px solid var(--border);
+  padding: 10px 16px;
+  font-size: 12.5px;
+}
+
+.reply-preview-text { color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.reply-preview-text strong { color: var(--accent); }
+
+.btn-icon {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 15px;
+  cursor: pointer;
+  flex-shrink: 0;
+  line-height: 1;
+  padding: 4px;
+}
+.btn-icon:hover { color: var(--text-primary); }
+
+/* ---------------------------------------------------------------------- */
+/* فرم ارسال پیام                                                         */
+/* ---------------------------------------------------------------------- */
+
+.message-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 14px 16px;
+  border-top: 1px solid var(--border);
+}
+
+.message-form textarea {
+  flex: 1;
+  resize: none;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-size: 14.5px;
+  max-height: 120px;
+  line-height: 1.5;
+}
+.message-form textarea:focus-visible { border-color: var(--accent); }
+
+.btn-send {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  color: var(--accent-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: filter 0.15s ease, transform 0.1s ease;
+}
+.btn-send svg { transform: scaleX(-1); } /* چون فلش برای چیدمان RTL باید معکوس بشه */
+.btn-send:hover { filter: brightness(1.08); }
+.btn-send:active { transform: scale(0.94); }
+.btn-send:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* ---------------------------------------------------------------------- */
+/* واکنش‌گرا -- موبایل                                                    */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 480px) {
+  .app-shell { padding: 10px; }
+  .chat-card { min-height: 78vh; max-height: 88vh; border-radius: 16px; }
+  .message { max-width: 86%; }
+}
+
+/* احترام به کاربرهایی که ترجیح میدن انیمیشن کمتری ببینن */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}

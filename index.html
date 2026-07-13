@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>CatChat</title>
+  <meta name="description" content="یک چت‌باکس ساده برای گروه دوستان">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <!-- ================= هدر بالای صفحه ================= -->
+    <header class="app-header">
+      <div class="brand">
+        <svg class="paw-icon" viewBox="0 0 64 64" aria-hidden="true">
+          <ellipse cx="32" cy="40" rx="16" ry="13"/>
+          <ellipse cx="12" cy="20" rx="7" ry="9" transform="rotate(-20 12 20)"/>
+          <ellipse cx="30" cy="12" rx="7.5" ry="9.5"/>
+          <ellipse cx="49" cy="16" rx="7" ry="9" transform="rotate(18 49 16)"/>
+          <ellipse cx="55" cy="33" rx="6.5" ry="8.5" transform="rotate(45 55 33)"/>
+        </svg>
+        <h1>CatChat</h1>
+      </div>
+
+      <div id="user-bar" class="user-bar hidden">
+        <span id="username-display" class="username-pill"></span>
+        <button id="logout-btn" class="btn-ghost" type="button">خروج</button>
+      </div>
+    </header>
+
+    <main class="app-main">
+
+      <!-- ================= بخش ورود / ثبت‌نام ================= -->
+      <section id="auth-section" class="card auth-card">
+        <div class="tabs" role="tablist">
+          <button class="tab active" id="tab-login" type="button" role="tab">ورود</button>
+          <button class="tab" id="tab-register" type="button" role="tab">ساخت اکانت</button>
+        </div>
+
+        <form id="login-form" class="auth-form">
+          <label>
+            نام کاربری
+            <input type="text" id="login-username" autocomplete="username" required maxlength="20">
+          </label>
+          <label>
+            رمز عبور
+            <input type="password" id="login-password" autocomplete="current-password" required>
+          </label>
+          <p class="field-error" id="login-error"></p>
+          <button type="submit" class="btn-primary">ورود به CatChat</button>
+        </form>
+
+        <form id="register-form" class="auth-form hidden">
+          <label>
+            نام کاربری (نباید تکراری باشه)
+            <input type="text" id="register-username" autocomplete="username" required maxlength="20">
+          </label>
+          <label>
+            رمز عبور
+            <input type="password" id="register-password" autocomplete="new-password" required>
+          </label>
+          <p class="field-hint">نام کاربری بین ۳ تا ۲۰ کاراکتر، رمز عبور حداقل ۴ کاراکتر</p>
+          <p class="field-error" id="register-error"></p>
+          <button type="submit" class="btn-primary">ساخت اکانت جدید</button>
+        </form>
+      </section>
+
+      <!-- ================= بخش چت ================= -->
+      <section id="chat-section" class="card chat-card hidden">
+
+        <div id="messages" class="messages" aria-live="polite">
+          <p class="empty-state" id="empty-state">
+            هنوز پیامی نیست 🐾<br>اولین نفری باش که پیام می‌ذاره!
+          </p>
+        </div>
+
+        <div id="reply-preview" class="reply-preview hidden">
+          <div class="reply-preview-text">
+            در پاسخ به <strong id="reply-preview-username"></strong>:
+            <span id="reply-preview-content"></span>
+          </div>
+          <button id="cancel-reply" type="button" class="btn-icon" aria-label="لغو پاسخ">✕</button>
+        </div>
+
+        <p class="field-error" id="chat-error"></p>
+
+        <form id="message-form" class="message-form">
+          <textarea
+            id="message-input"
+            placeholder="پیامت رو بنویس..."
+            maxlength="500"
+            rows="1"
+            required
+          ></textarea>
+          <button type="submit" id="send-btn" class="btn-send" aria-label="ارسال پیام">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path d="M3 11.5L21 3l-7.5 18-3-7.5-7.5-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </form>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
